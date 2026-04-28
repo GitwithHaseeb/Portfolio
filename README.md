@@ -108,3 +108,4 @@ Lottie animations – replace JSON files in src/assets/lottie/
 Page title & meta tags – public/index.html
 
 To hide a section (e.g., Blogs, Twitter), set its display flag to false in portfolio.js.
+🔗 **Live Demo** → https://portfolio-fs3i.vercel.app/
