@@ -12,7 +12,7 @@
 **A clean, responsive, and modern portfolio template for Muhammad Haseeb – an aspiring full‑stack developer.**  
 This portfolio showcases technical skills, education, work experience, and featured projects in a polished single‑page layout. It's fully customizable via a central configuration file and supports GitHub integration.
 
-🔗 **Live Demo** → *[Add your Vercel URL here after deployment]*
+🔗 **Live Demo** → *(https://portfolio-fs3i.vercel.app/)*
 
 ---
 
