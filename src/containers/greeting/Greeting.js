@@ -87,7 +87,7 @@ export default function Greeting() {
           </div>
         </Reveal>
 
-        <Reveal direction="right" delay={120}>
+        <Reveal direction="right" delay={120} className="hero__media-reveal">
           <div className="hero__media">
             <div className="hero__portrait-wrap">
               <div className="hero__portrait-ring" aria-hidden="true"></div>
