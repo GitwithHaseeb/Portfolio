@@ -190,6 +190,9 @@
   z-index: 1;
   display: block;
   width: 100%;
+  /* height:auto is required -- the img's height attribute would otherwise
+     resolve the height and disable aspect-ratio */
+  height: auto;
   aspect-ratio: 4 / 5;
   object-fit: cover;
   object-position: center;
