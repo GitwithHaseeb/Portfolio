@@ -1,69 +1,53 @@
-import React, {useContext} from "react";
+import React from "react";
 import "./Contact.scss";
 import SocialMedia from "../../components/socialMedia/SocialMedia";
-import {illustration, contactInfo} from "../../portfolio";
-import {Fade} from "react-reveal";
-import email from "../../assets/lottie/email";
-import DisplayLottie from "../../components/displayLottie/DisplayLottie";
-import StyleContext from "../../contexts/StyleContext";
+import {contactInfo} from "../../portfolio";
+import Reveal from "../../components/reveal/Reveal";
 
 export default function Contact() {
-  const {isDark} = useContext(StyleContext);
   return (
-    <Fade bottom duration={1000} distance="20px">
-      <div className="main contact-margin-top" id="contact">
-        <div className="contact-div-main">
-          <div className="contact-header">
-            <h1 className="heading contact-title">{contactInfo.title}</h1>
-            <p
-              className={
-                isDark
-                  ? "dark-mode contact-subtitle"
-                  : "subTitle contact-subtitle"
-              }
-            >
-              {contactInfo.subtitle}
-            </p>
-            <div
-              className={
-                isDark ? "dark-mode contact-text-div" : "contact-text-div"
-              }
-            >
-              {contactInfo.number && (
-                <>
-                  <a
-                    className="contact-detail"
-                    href={"tel:" + contactInfo.number}
-                  >
-                    {contactInfo.number}
-                  </a>
-                  <br />
-                  <br />
-                </>
-              )}
+    <div className="main contact-section" id="contact">
+      <Reveal>
+        <div className="contact-panel">
+          <div className="contact-panel__glow" aria-hidden="true"></div>
+
+          <div className="contact-panel__content">
+            <span className="section-eyebrow">Contact</span>
+            <h1 className="section-title contact-title">{contactInfo.title}</h1>
+            <p className="contact-subtitle">{contactInfo.subtitle}</p>
+
+            <div className="contact-methods">
               <a
-                className="contact-detail-email"
-                href={"mailto:" + contactInfo.email_address}
+                className="contact-method contact-method--primary"
+                href={`mailto:${contactInfo.email_address}`}
               >
-                {contactInfo.email_address}
+                <i className="fas fa-envelope" aria-hidden="true"></i>
+                <span>
+                  <small>Email</small>
+                  {contactInfo.email_address}
+                </span>
               </a>
-              <br />
-              <br />
+
+              {contactInfo.number && (
+                <a
+                  className="contact-method"
+                  href={`tel:${contactInfo.number.replace(/\s/g, "")}`}
+                >
+                  <i className="fas fa-phone-alt" aria-hidden="true"></i>
+                  <span>
+                    <small>Phone</small>
+                    {contactInfo.number}
+                  </span>
+                </a>
+              )}
+            </div>
+
+            <div className="contact-social">
               <SocialMedia />
             </div>
           </div>
-          <div className="contact-image-div">
-            {illustration.animated ? (
-              <DisplayLottie animationData={email} />
-            ) : (
-              <img
-                alt="Man working"
-                src={require("../../assets/images/contactMailDark.svg")}
-              ></img>
-            )}
-          </div>
         </div>
-      </div>
-    </Fade>
+      </Reveal>
+    </div>
   );
 }

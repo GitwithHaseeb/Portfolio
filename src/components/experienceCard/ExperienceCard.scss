@@ -1,156 +1,209 @@
-@import "../../_globalColor";
+@import "../../globalColor";
 
-.experience-card {
+.xp-card {
   position: relative;
-  background-color: $lightBackground2;
-  box-shadow: $lightBoxShadowDark 0px 10px 30px -15px;
-  border-radius: 10px;
-  border: 1px solid $lightBorder1;
-}
-
-.experience-card-dark {
-  position: relative;
-  background-color: $darkBackground;
-  box-shadow: $lightBoxShadowDark 0px 10px 30px -15px;
-  border-radius: 10px;
-  border: 1px solid $lightBorder1;
-}
-
-.experience-card:hover {
-  box-shadow: $lightBoxShadowDark 0px 20px 30px -10px;
-}
-
-.experience-banner {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 150%;
-  background: $experienceCardBannerLG;
-  border-radius: 10px 10px 0px 0px;
-  -webkit-filter: blur(0px);
-  -moz-filter: blur(0px);
-  -o-filter: blur(0px);
-  -ms-filter: blur(0px);
-  filter: blur(0px);
-  height: 11rem;
   display: flex;
-  align-items: flex-end;
+  gap: 24px;
+  padding-bottom: 34px;
+  text-align: left;
+}
+
+.xp-card:last-child {
+  padding-bottom: 0;
+}
+
+/* timeline rail */
+.xp-card__marker {
+  position: relative;
+  flex: 0 0 14px;
+  display: flex;
   justify-content: center;
 }
 
-.experience-blurred_div {
+.xp-card__marker::before {
+  content: "";
   position: absolute;
-  background: $experienceCardBlurredDivLG;
-  -webkit-filter: blur(5px);
-  -moz-filter: blur(5px);
-  -o-filter: blur(5px);
-  -ms-filter: blur(5px);
-  filter: blur(5px);
-  height: 11rem;
-  top: 0;
-  left: 0;
-  width: 100%;
-  border-radius: 10px 10px 0px 0px;
+  top: 22px;
+  bottom: -34px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent-ring), transparent 92%);
 }
 
-.experience-div-company {
-  position: absolute;
-  background: transparent;
-  height: 9rem;
-  top: 0;
-  left: 0;
-  width: 100%;
+.xp-card:last-child .xp-card__marker::before {
+  display: none;
+}
+
+.xp-card__dot {
+  position: relative;
+  z-index: 1;
+  margin-top: 14px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--grad);
+  box-shadow: 0 0 0 5px var(--accent-soft);
+}
+
+.xp-card__body {
+  flex: 1;
+  min-width: 0;
+  padding: 24px 26px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.xp-card__body:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-ring);
+  box-shadow: var(--shadow);
+}
+
+.xp-card__header {
   display: flex;
   align-items: center;
+  gap: 15px;
+  margin-bottom: 14px;
+}
+
+.xp-card__logo {
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-}
-
-.experience-text-company {
-  text-align: center;
-  padding: 1.5rem;
-  margin: 0;
-  color: $lightBackground1;
-  font-size: 25px;
-  text-align: center;
-  font-weight: 700;
-  text-overflow: ellipsis;
+  flex: 0 0 52px;
+  width: 52px;
+  height: 52px;
   overflow: hidden;
-  white-space: nowrap;
-}
-
-.experience-roundedimg {
-  position: absolute;
-  object-fit: cover;
-  left: 0;
-  right: 0;
-  top: 7rem;
-  margin-left: auto;
-  margin-right: auto;
-  width: 8rem;
-  height: 8rem;
-  box-shadow: 0 0.5rem 1rem $lightBoxShadowDarker;
-  border-radius: 50%;
-}
-
-.experience-text-role {
-  text-align: center;
-  color: $textColor;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
   font-weight: 700;
-  font-size: 25px;
-  margin: 0px;
-  padding-top: 1.5rem;
-  line-height: normal;
+  letter-spacing: 0.02em;
+  color: #fff;
+  background: var(--grad);
+  border-radius: 14px;
 }
-.dark-mode-text {
-  color: $textColorDark !important;
+
+.xp-card__logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-.experience-text-date {
-  text-align: center;
-  color: $textColor;
-  font-size: 20px;
-  margin: 0px;
-  padding-top: 1rem;
+
+.xp-card__heading {
+  min-width: 0;
+  flex: 1;
+}
+
+.xp-card__role {
+  margin: 0;
+  font-size: 1.12rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--text);
+}
+
+.xp-card__company {
+  margin: 2px 0 0;
+  font-size: 0.92rem;
   font-weight: 600;
+  color: var(--accent);
 }
 
-.experience-text-desc {
-  text-align: center;
+.xp-card__date {
+  flex: 0 0 auto;
+  padding: 6px 13px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--text-muted);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
 }
 
-.experience-text-details {
-  padding: 1.5rem;
-  margin-top: 2rem;
+.xp-card__desc {
+  margin: 0 0 12px;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+.xp-card__bullets {
+  margin: 0;
+  padding-left: 20px;
+  list-style: none;
+}
+
+.xp-card__bullets li {
+  position: relative;
+  margin-bottom: 9px;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+.xp-card__bullets li::before {
+  content: "";
+  position: absolute;
+  left: -18px;
+  top: 0.62em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.xp-card__bullets li:last-child {
+  margin-bottom: 0;
 }
 
 /* Media Query */
-
-@media (max-width: 1380px) {
-  .experience-text-role {
-    padding-top: 0.5rem;
-    font-size: 22px;
+@media (max-width: 768px) {
+  .xp-card {
+    gap: 16px;
   }
-  .experience-text-company {
-    font-size: 22px;
+  .xp-card__body {
+    padding: 20px 18px;
   }
-  .experience-text-date {
-    font-size: 18px;
+  .xp-card__header {
+    flex-wrap: wrap;
+    gap: 12px;
   }
-  .experience-roundedimg {
-    width: 6.5rem;
-    height: 6.5rem;
+  .xp-card__date {
+    order: 3;
+    width: 100%;
+    text-align: center;
+  }
+  .xp-card__role {
+    font-size: 1.02rem;
   }
 }
 
-@media (max-width: 768px) {
-  .experience-text-role {
-    font-size: 22px;
-  }
-  .experience-text-company {
-    font-size: 22px;
-  }
-  .experience-text-date {
-    font-size: 18px;
-  }
-  .experience-text-desc {
-    font-size: 16px;
-  }
+.xp-card__company a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.xp-card__company a:hover {
+  opacity: 0.78;
+  text-decoration: underline;
+}
+
+.xp-card__company a i {
+  font-size: 0.62em;
+  opacity: 0.7;
+}
+
+.xp-card__date--now {
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-color: var(--accent-ring);
 }

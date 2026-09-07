@@ -1,84 +1,70 @@
-import React, {useState, createRef} from "react";
+import React from "react";
 import "./ExperienceCard.scss";
-import ColorThief from "colorthief";
 
-export default function ExperienceCard({cardInfo, isDark}) {
-  const [colorArrays, setColorArrays] = useState([]);
-  const imgRef = createRef();
-
-  function getColorArrays() {
-    const colorThief = new ColorThief();
-    setColorArrays(colorThief.getColor(imgRef.current));
-  }
-
-  function rgb(values) {
-    return typeof values === "undefined"
-      ? null
-      : "rgb(" + values.join(", ") + ")";
-  }
-
-  const GetDescBullets = ({descBullets, isDark}) => {
-    return descBullets
-      ? descBullets.map((item, i) => (
-          <li
-            key={i}
-            className={isDark ? "subTitle dark-mode-text" : "subTitle"}
-          >
-            {item}
-          </li>
-        ))
-      : null;
-  };
+export default function ExperienceCard({cardInfo}) {
+  const initials =
+    cardInfo.companyShort ||
+    (cardInfo.company || "")
+      .split(" ")
+      .slice(0, 2)
+      .map(word => word.charAt(0))
+      .join("")
+      .toUpperCase();
 
   return (
-    <div className={isDark ? "experience-card-dark" : "experience-card"}>
-      <div style={{background: rgb(colorArrays)}} className="experience-banner">
-        <div className="experience-blurred_div"></div>
-        <div className="experience-div-company">
-          <h5 className="experience-text-company">{cardInfo.company}</h5>
-        </div>
+    <article className="xp-card">
+      <div className="xp-card__marker" aria-hidden="true">
+        <span className="xp-card__dot"></span>
+      </div>
 
-        <img
-          crossOrigin={"anonymous"}
-          ref={imgRef}
-          className="experience-roundedimg"
-          src={cardInfo.companylogo}
-          alt={cardInfo.company}
-          onLoad={() => getColorArrays()}
-        />
+      <div className="xp-card__body">
+        <header className="xp-card__header">
+          <span className="xp-card__logo" aria-hidden="true">
+            {cardInfo.companylogo ? (
+              <img src={cardInfo.companylogo} alt="" loading="lazy" />
+            ) : (
+              initials
+            )}
+          </span>
+
+          <div className="xp-card__heading">
+            <h3 className="xp-card__role">{cardInfo.role}</h3>
+            <p className="xp-card__company">
+              {cardInfo.companyUrl ? (
+                <a href={cardInfo.companyUrl} target="_blank" rel="noreferrer">
+                  {cardInfo.company}
+                  <i
+                    className="fas fa-external-link-alt"
+                    aria-hidden="true"
+                  ></i>
+                </a>
+              ) : (
+                cardInfo.company
+              )}
+            </p>
+          </div>
+
+          <span
+            className={
+              cardInfo.current
+                ? "xp-card__date xp-card__date--now"
+                : "xp-card__date"
+            }
+          >
+            {cardInfo.date}
+          </span>
+        </header>
+
+        {cardInfo.desc && <p className="xp-card__desc">{cardInfo.desc}</p>}
+
+        {cardInfo.descBullets && cardInfo.descBullets.length > 0 && (
+          <ul className="xp-card__bullets">
+            {cardInfo.descBullets.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
+        )}
       </div>
-      <div className="experience-text-details">
-        <h5
-          className={
-            isDark
-              ? "experience-text-role dark-mode-text"
-              : "experience-text-role"
-          }
-        >
-          {cardInfo.role}
-        </h5>
-        <h5
-          className={
-            isDark
-              ? "experience-text-date dark-mode-text"
-              : "experience-text-date"
-          }
-        >
-          {cardInfo.date}
-        </h5>
-        <p
-          className={
-            isDark
-              ? "subTitle experience-text-desc dark-mode-text"
-              : "subTitle experience-text-desc"
-          }
-        >
-          {cardInfo.desc}
-        </p>
-        <ul>
-          <GetDescBullets descBullets={cardInfo.descBullets} isDark={isDark} />
-        </ul>
-      </div>
-    </div>
+    </article>
   );
 }

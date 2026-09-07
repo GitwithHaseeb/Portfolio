@@ -1,50 +1,15 @@
-.education-heading {
-  font-size: 56px;
-  font-weight: 400;
-}
-
-.education-section {
-  display: flex;
-  flex-direction: column;
-  width: 90%;
-  padding: 20px 0px;
-  margin: 0px auto;
-  margin-top: 2rem;
-}
-
-.education-section > * {
-  flex: 1;
-  margin-bottom: 30px;
-}
+@import "../../globalColor";
 
 .education-card-container {
-  display: flex;
-  flex-direction: column;
-  padding-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 22px;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-@media (max-width: 1380px) {
+@media (max-width: 860px) {
   .education-card-container {
-    padding-top: 0px;
-  }
-  .education-heading {
-    font-size: 40px;
-  }
-  .education-text-subtitle {
-    font-size: 18px;
-    text-align: center;
-  }
-}
-
-@media (max-width: 768px) {
-  .education-card-container {
-    padding-top: 0px;
-  }
-  .education-heading {
-    font-size: 30px;
-    text-align: center;
-  }
-  .education-text-subtitle {
-    font-size: 16px;
+    grid-template-columns: 1fr;
   }
 }

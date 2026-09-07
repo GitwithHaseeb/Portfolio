@@ -1,134 +1,130 @@
-@import "../../_globalColor";
+@import "../../globalColor";
 
-.education-card {
+.edu-card {
   display: flex;
-  flex-direction: row;
+  gap: 22px;
+  padding: 26px;
+  text-align: left;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    border-color 0.25s ease;
 }
 
-.education-card:hover + .education-card-border {
-  border-color: $educationCardBorder;
-  width: 100%;
-  -webkit-transition: width 0.6s ease-in-out;
-  -moz-transition: width 0.6s ease-in-out;
-  -o-transition: width 0.6s ease-in-out;
-  transition: width 0.6s ease-in-out;
+.edu-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-ring);
+  box-shadow: var(--shadow);
 }
 
-.education-card-border {
-  height: 30px;
-  width: 80%;
-  border-top: 2px solid $lightBorder1;
-  margin-bottom: 20px;
-  -webkit-transition: width 0.6s ease-in-out;
-  -moz-transition: width 0.6s ease-in-out;
-  -o-transition: width 0.6s ease-in-out;
-  transition: width 0.6s ease-in-out;
-}
-
-.education-head {
+.edu-card__logo {
+  flex: 0 0 66px;
+  width: 66px;
+  height: 66px;
   display: flex;
-  flex-direction: row;
-}
-
-.education-text-school {
-  margin: 0;
-  font-size: 28px;
-  font-weight: 700;
-  text-overflow: ellipsis;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
   overflow: hidden;
-  white-space: nowrap;
-  height: 27px;
 }
 
-.education-roundedimg {
-  object-fit: cover;
-  margin-right: 2rem;
-  width: 6rem;
-  height: 6rem;
-  box-shadow: 0 0.5rem 1rem $lightBoxShadowDarker;
-  border-radius: 50%;
+.edu-card__logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
-.education-card-right {
-  max-width: 70%;
+.edu-card__body {
+  flex: 1;
+  min-width: 0;
 }
 
-.education-text-subHeader {
-  color: $textColor;
+.edu-card__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.edu-card__school {
+  margin: 0;
+  font-size: 1.12rem;
   font-weight: 700;
-  font-size: 19px;
-  margin: 0px;
-  padding-top: 0.8rem;
-  line-height: normal;
+  line-height: 1.35;
+  color: var(--text);
 }
 
-.education-text-duration {
-  color: $titleColor;
-  font-size: 19px;
-  margin: 0px;
-  padding-top: 0.5rem;
+.edu-card__duration {
+  padding: 5px 12px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--text-muted);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
 }
 
-.education-text-desc {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+.edu-card__degree {
+  margin: 0 0 10px;
+  font-size: 0.94rem;
+  font-weight: 600;
+  color: var(--accent);
 }
 
-.education-text-bullets > ul {
-  margin-top: 0.5rem;
+.edu-card__desc {
+  margin: 0 0 12px;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+.edu-card__bullets {
+  margin: 0;
+  padding-left: 20px;
+  list-style: none;
+}
+
+.edu-card__bullets li {
+  position: relative;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+.edu-card__bullets li::before {
+  content: "";
+  position: absolute;
+  left: -18px;
+  top: 0.62em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.edu-card__bullets li:last-child {
+  margin-bottom: 0;
 }
 
 /* Media Query */
-
-@media (max-width: 1380px) {
-  .education-card {
+@media (max-width: 640px) {
+  .edu-card {
     flex-direction: column;
-    padding-bottom: 10px;
+    gap: 16px;
+    padding: 20px;
   }
-  .education-card-right {
-    max-width: 90%;
-  }
-  .education-card-border {
-    width: 90%;
-  }
-  .education-text-subHeader {
-    padding-top: 0.5rem;
-    font-size: 16px;
-  }
-  .education-text-school {
-    font-size: 20px;
-    height: 23px;
-  }
-  .education-text-duration {
-    font-size: 16px;
-  }
-  .education-roundedimg {
-    width: 4rem;
-    height: 4rem;
-    margin-bottom: 0.5rem;
-    margin-right: 0px;
-  }
-}
-
-@media (max-width: 768px) {
-  .education-card {
-    text-align: center;
-  }
-  .education-card-right {
-    max-width: 100%;
-  }
-  .education-card-border {
-    width: 100%;
-  }
-  .education-roundedimg {
-    margin-top: 10px;
-    width: 4rem;
-    height: 4rem;
-    margin-bottom: 1rem;
-    margin-right: 0;
-  }
-  .education-text-bullets > ul {
-    max-width: 80%;
-    margin: auto;
+  .edu-card__logo {
+    flex: 0 0 56px;
+    width: 56px;
+    height: 56px;
   }
 }

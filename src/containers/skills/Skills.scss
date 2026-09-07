@@ -1,64 +1,107 @@
-@import "../../_globalColor";
+@import "../../globalColor";
 
 .skills-main-div {
-  display: flex;
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 48px;
+  align-items: center;
   width: 100%;
-  overflow: hidden;
-}
-
-.skills-text-div {
-  margin-left: 50px;
 }
 
 .skills-main-div > * {
-  flex: 1;
-  margin-bottom: 30px;
+  min-width: 0;
 }
 
-.skills-image-div > img {
+.skills-image-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.skills-image-div svg {
   max-width: 100%;
   height: auto;
 }
 
-.skills-heading {
-  font-size: 56px;
-  font-weight: 400;
+.skills-image-div > img,
+.skills-image-div > div {
+  max-width: 100%;
+  height: auto;
 }
-.subTitle {
-  color: $subTitle;
+
+.skills-text-div {
+  text-align: left;
+}
+
+.skills-title {
+  text-align: left;
+  margin-bottom: 12px;
+}
+
+.skills-text-subtitle {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+.skills-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.skills-text {
+  padding: 15px 18px;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 12px;
+  transition: transform 0.22s ease, box-shadow 0.22s ease,
+    border-color 0.22s ease;
+}
+
+.skills-text:hover {
+  transform: translateX(4px);
+  box-shadow: var(--shadow-sm);
+}
+
+.skills-text img.emoji {
+  height: 1em;
+  width: 1em;
+  vertical-align: -0.12em;
 }
 
 /* Media Query */
-@media (max-width: 1380px) {
-  .skills-heading {
-    font-size: 40px;
-  }
-}
-@media (max-width: 768px) {
-  .skills-heading {
-    font-size: 30px;
-    text-align: center;
-  }
-  .greeting-text-p {
-    font-size: 16px;
-    line-height: normal;
-  }
+@media (max-width: 1024px) {
   .skills-main-div {
-    flex-direction: column;
-  }
-  .skills-text-div {
-    margin-left: 0px;
-    margin: 20px;
-  }
-  .skills-text {
-    font-size: 16px;
-  }
-  .skills-text-subtitle {
-    font-size: 16px;
-    text-align: center;
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
   .skills-image-div {
-    /* display: none; */
-    order: 2;
+    order: -1;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+  .skills-text-div {
+    text-align: center;
+  }
+  .skills-title {
+    text-align: center;
+  }
+  .skills-text {
+    text-align: left;
   }
 }

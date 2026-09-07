@@ -1,7 +1,18 @@
-@import "../_globalColor";
+@import "../globalColor";
+
+.app-shell {
+  min-height: 100vh;
+  overflow-x: clip;
+  background: var(--bg);
+  color: var(--text);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
 
 .dark-mode {
-  background-color: $darkBackground;
-  color: white;
-  transition: "0.1s";
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+main {
+  display: block;
 }

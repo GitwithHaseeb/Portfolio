@@ -1,5 +1,4 @@
-import React, {useContext} from "react";
-import Headroom from "react-headroom";
+import React, {useContext, useEffect, useState} from "react";
 import "./Header.scss";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import StyleContext from "../../contexts/StyleContext";
@@ -7,87 +6,84 @@ import {
   greeting,
   workExperiences,
   skillsSection,
-  openSource,
-  blogSection,
-  talkSection,
-  achievementSection,
-  resumeSection
+  educationInfo,
+  bigProjects,
+  achievementSection
 } from "../../portfolio";
+
+const NAV_ITEMS = [
+  {id: "skills", label: "Skills", show: () => skillsSection.display},
+  {id: "experience", label: "Experience", show: () => workExperiences.display},
+  {id: "education", label: "Education", show: () => educationInfo.display},
+  {id: "projects", label: "Projects", show: () => bigProjects.display},
+  {
+    id: "achievements",
+    label: "Competencies",
+    show: () => achievementSection.display
+  },
+  {id: "contact", label: "Contact", show: () => true}
+];
 
 function Header() {
   const {isDark} = useContext(StyleContext);
-  const viewExperience = workExperiences.display;
-  const viewOpenSource = openSource.display;
-  const viewSkills = skillsSection.display;
-  const viewAchievement = achievementSection.display;
-  const viewBlog = blogSection.display;
-  const viewTalks = talkSection.display;
-  const viewResume = resumeSection.display;
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, {passive: true});
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const items = NAV_ITEMS.filter(item => item.show());
 
   return (
-    <Headroom>
-      <header className={isDark ? "dark-menu header" : "header"}>
-        <a href="/" className="logo">
-          <span className="grey-color"> &lt;</span>
-          <span className="logo-name">{greeting.username}</span>
-          <span className="grey-color">/&gt;</span>
+    <header
+      className={[
+        "site-header",
+        scrolled ? "site-header--scrolled" : "",
+        isDark ? "site-header--dark" : ""
+      ]
+        .filter(Boolean)
+        .join(" ")}
+    >
+      <div className="site-header__inner">
+        <a href="#greeting" className="site-header__logo">
+          <span className="site-header__logo-mark">MH</span>
+          <span className="site-header__logo-text">{greeting.username}</span>
         </a>
-        <input className="menu-btn" type="checkbox" id="menu-btn" />
-        <label
-          className="menu-icon"
-          htmlFor="menu-btn"
-          style={{color: "white"}}
+
+        <nav
+          className={open ? "site-nav site-nav--open" : "site-nav"}
+          aria-label="Primary"
         >
-          <span className={isDark ? "navicon navicon-dark" : "navicon"}></span>
-        </label>
-        <ul className={isDark ? "dark-menu menu" : "menu"}>
-          {viewSkills && (
-            <li>
-              <a href="#skills">Skills</a>
-            </li>
-          )}
-          {viewExperience && (
-            <li>
-              <a href="#experience">Work Experiences</a>
-            </li>
-          )}
-          {viewOpenSource && (
-            <li>
-              <a href="#opensource">Open Source</a>
-            </li>
-          )}
-          {viewAchievement && (
-            <li>
-              <a href="#achievements">Achievements</a>
-            </li>
-          )}
-          {viewBlog && (
-            <li>
-              <a href="#blogs">Blogs</a>
-            </li>
-          )}
-          {viewTalks && (
-            <li>
-              <a href="#talks">Talks</a>
-            </li>
-          )}
-          {viewResume && (
-            <li>
-              <a href="#resume">Resume</a>
-            </li>
-          )}
-          <li>
-            <a href="#contact">Contact Me</a>
-          </li>
-          <li>
-            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-            <a>
-              <ToggleSwitch />
-            </a>
-          </li>
-        </ul>
-      </header>
-    </Headroom>
+          <ul className="site-nav__list">
+            {items.map(item => (
+              <li key={item.id}>
+                <a href={`#${item.id}`} onClick={() => setOpen(false)}>
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div className="site-header__actions">
+          <ToggleSwitch />
+          <button
+            type="button"
+            className="site-header__burger"
+            aria-label="Toggle navigation menu"
+            aria-expanded={open}
+            onClick={() => setOpen(v => !v)}
+          >
+            <span className={open ? "burger burger--open" : "burger"}></span>
+          </button>
+        </div>
+      </div>
+    </header>
   );
 }
+
 export default Header;

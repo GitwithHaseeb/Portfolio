@@ -4,20 +4,49 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  background: var(--bg);
 }
 
 .splash-animation-container {
-  height: 50vh;
+  height: 42vh;
+  max-width: 420px;
 }
 
 .splash-title-container {
-  font-size: 2.5rem;
-  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 8px;
 }
+
+.splash-logo-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--grad);
+  border-radius: 14px;
+}
+
 .splash-title {
-  font-family: "Agustina Regular", cursive;
-  font-weight: bold;
-  font-variant-ligatures: no-common-ligatures;
-  -webkit-font-variant-ligatures: no-common-ligatures;
-  padding: 0 20px;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+
+.splash-tagline {
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
 }

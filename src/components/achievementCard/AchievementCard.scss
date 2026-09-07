@@ -1,77 +1,71 @@
-@import "../../_globalColor";
+@import "../../globalColor";
 
-.card-image {
-  max-width: 100%;
-  height: auto;
-  width: 250px;
-}
-.card-title {
-  color: $titleColor;
-  font-size: 1.375rem;
-  line-height: 24px;
-  font-weight: 700;
-  margin: 15px 0 0 0;
-}
-.card-subtitle {
-  color: $cardSubtitle;
-  font-size: 1.063rem;
-  line-height: 1.5rem;
-}
-.certificate-card {
-  background-color: $lightBackground2;
-  box-shadow: $lightBoxShadowDark 0px 10px 30px -15px;
-  padding: 1.5rem;
-  border-radius: 10px;
-  border: 1px solid $lightBorder1;
-  -webkit-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-}
-.certificate-detail-div {
-  text-align: center;
-}
-.certificate-card:hover {
-  box-shadow: $lightBoxShadowDark 0px 20px 30px -10px;
-}
-.dark-mode.certificate-card:hover {
-  box-shadow: $achievementCertificateCardHoverDark 0px 20px 30px -10px;
-}
-.certificate-image-div {
+.competency-card {
   position: relative;
-  height: 250px;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 26px;
+  text-align: left;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
   overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    border-color 0.25s ease;
 }
-.achievement-cards-div {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1rem 1rem;
+
+.competency-card::after {
+  content: "";
+  position: absolute;
+  inset: auto -40% -60% auto;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  background: var(--grad);
+  opacity: 0;
+  filter: blur(50px);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
 }
-.certificate-card-footer {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: center;
+
+.competency-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-ring);
+  box-shadow: var(--shadow-lg);
 }
-.certificate-card-footer span.certificate-tag {
-  background: $buttonColor;
-  color: $lightBackground3;
-  vertical-align: middle;
-  align-items: center;
-  border-radius: 4px;
+
+.competency-card:hover::after {
+  opacity: 0.18;
+}
+
+.competency-card__icon {
   display: inline-flex;
-  font-size: 0.75rem;
-  height: 2em;
+  align-items: center;
   justify-content: center;
-  white-space: nowrap;
-  line-height: 1.5;
-  margin: 0 0.5rem 0.5rem 0;
-  padding: 0 0.75em;
-  cursor: pointer;
-  transition: 0.2s ease-in;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 18px;
+  font-size: 1.15rem;
+  color: #fff;
+  background: var(--grad);
+  border-radius: 14px;
+  box-shadow: 0 10px 22px -12px var(--accent-ring);
 }
-span.certificate-tag:hover {
-  background: $buttonHover;
+
+.competency-card__title {
+  position: relative;
+  margin: 0 0 10px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+.competency-card__desc {
+  position: relative;
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--text-muted);
 }

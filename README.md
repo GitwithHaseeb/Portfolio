@@ -1,111 +1,94 @@
-# Muhammad Haseeb – Software Developer Portfolio
+# Muhammad Haseeb — Portfolio
 
-<div align="center">
+Personal engineering portfolio for **Muhammad Haseeb**, Full-Stack Software Engineer and AI/ML Engineer.
 
-[![GitHub License](https://img.shields.io/github/license/GitwithHaseeb/Portfolio)](LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/GitwithHaseeb/Portfolio)](https://github.com/GitwithHaseeb/Portfolio/stargazers)
-[![Made with React](https://img.shields.io/badge/Made%20with-React-61DAFB?logo=react)](https://reactjs.org/)
-[![Deploy to Vercel](https://img.shields.io/badge/Deploy%20to-Vercel-black?logo=vercel)](https://vercel.com/new/)
-
-</div>
-
-**A clean, responsive, and modern portfolio template for Muhammad Haseeb – an aspiring full‑stack developer.**  
-This portfolio showcases technical skills, education, work experience, and featured projects in a polished single‑page layout. It's fully customizable via a central configuration file and supports GitHub integration.
-
-🔗 **Live Demo** → *(https://portfolio-fs3i.vercel.app/)*
+**Live:** https://portfolio-lyart-xi-5uiolk4l8b.vercel.app/
 
 ---
 
-## 👨‍💻 About the Developer
+## Overview
 
-**Muhammad Haseeb** is a final‑year BSCS student at the University of Central Punjab, Lahore. He focuses on full‑stack web development, AI‑powered solutions, and reliable software using Python, FastAPI, Node.js, and modern databases. He has interned as a Java Developer at Uworx Software House and built multiple end‑to‑end applications that blend web technologies with machine learning.
+A single-page React portfolio covering capabilities, proficiency, professional experience, education, 27 selected projects, and contact details. The projects section is filterable by engineering domain (AI & Machine Learning, Full-Stack, Frontend, Desktop) and links out to each repository and live deployment.
 
-> *Entry‑level Software Developer and final‑year BSCS student focused on full‑stack web development, AI‑powered solutions, and building reliable software with Python, JavaScript, FastAPI, Node.js, and databases.*  
-> — Muhammad Haseeb
+## Highlights
 
----
+- **Token-based theming** — the full palette is defined once as CSS custom properties in `src/index.css`, with a light and dark set. Every component reads from those tokens, so the whole site re-themes from one place.
+- **Instant dark mode** — persisted to `localStorage`, defaults to the OS `prefers-color-scheme`.
+- **Filterable project grid** — 27 projects grouped by domain, with per-project tech stacks and repository / live links.
+- **Lightweight scroll reveals** — a small `IntersectionObserver` component (`src/components/reveal/Reveal.js`) replaces the heavier animation library the template shipped with; it honours `prefers-reduced-motion`.
+- **SEO ready** — descriptive metadata, Open Graph and Twitter cards, a canonical URL, and `Person` JSON-LD structured data.
+- **Accessible and responsive** — semantic landmarks, ARIA labels on interactive controls, keyboard-navigable filters, and layouts that hold from 320px upward with no horizontal overflow.
 
-## 🚀 Portfolio Sections
+## Tech stack
 
-✔️ **Greeting & Summary** – Professional introduction with profile image  
-✔️ **Skills & Tech Stack** – Visual skill bars and technology icons  
-✔️ **Education** – BSCS (UCP Lahore) and ICS (PGC Lahore)  
-✔️ **Work Experience** – Java Intern at Uworx Software House  
-✔️ **Open Source Projects** – (Optional) GitHub pinned repositories  
-✔️ **Selected Projects** – Eight featured projects (web, ML, AI)  
-✔️ **Achievements & Certifications** – Recognitions and badges  
-✔️ **Contact Me** – Email and phone number  
-✔️ **GitHub Profile** – (Optional) Display GitHub stats  
+| Layer | Technology |
+|-------|------------|
+| UI | React 16, Create React App |
+| Styling | Sass, CSS custom properties |
+| Motion | IntersectionObserver reveals, CSS transitions, Lottie |
+| Icons | Font Awesome 5 |
+| Type | Inter, Space Grotesk, JetBrains Mono |
+| Hosting | Vercel |
 
----
+## Project structure
 
-## 🛠️ Built With
+```text
+src/
+├── portfolio.js              # All site content — the single source of truth
+├── index.css                 # Design tokens (light + dark) and base typography
+├── _globalColor.scss         # SCSS mirror of the colour tokens
+├── components/               # Header, buttons, cards, reveal, social, toggle
+└── containers/               # Hero, skills, proficiency, experience,
+                              # education, projects, competencies, contact
+```
 
-- [React](https://reactjs.org/) – UI library
-- [React Scripts](https://create-react-app.dev/) – Build tooling
-- [Sass](https://sass-lang.com/) – CSS preprocessing
-- [Lottie React](https://www.npmjs.com/package/lottie-react) – Animations
-- [React Easy Emoji](https://www.npmjs.com/package/react-easy-emoji) – Emoji support
-- [React Headroom](https://www.npmjs.com/package/react-headroom) – Sticky navigation
-- [React Reveal](https://www.react-reveal.com/) – Scroll animations
-- [React Twitter Embed](https://www.npmjs.com/package/react-twitter-embed) – Twitter feed (optional)
-- [Color Thief](https://github.com/lokesh/color-thief) – Dynamic color extraction
+## Editing the content
 
----
+Everything shown on the site lives in **`src/portfolio.js`** — no component changes are needed for content edits.
 
-## 🖼️ Selected Projects (Highlighted in Portfolio)
+- `greeting` — name, rotating roles, summary, current role badge, profile image
+- `heroStats` — the metrics band under the hero
+- `skillsSection` — capability statements and the technology chips
+- `techStack` — proficiency bars
+- `workExperiences` — roles, dates, and bullet points
+- `educationInfo` — schools and coursework
+- `bigProjects` — project cards: category, description, tech list, and links
+- `achievementSection` — core competency cards
+- `contactInfo` — email, phone, and contact copy
 
-| Project | Description |
-|---------|-------------|
-| **BloodLink-AI** | Role‑based blood donation platform with JWT auth, city matching, and AI assistant. |
-| **Expense Tracker Pro** | Full‑stack personal finance manager with budgets, analytics, and forecasting. |
-| **Vehicle Tracking System** | FastAPI + React real‑time tracking with ETA prediction and anomaly detection. |
-| **MyRecs Recommender** | Recommendation engine using TF‑IDF, matrix factorization, and sentence transformers. |
-| **MyHinglishSentiment** | Hinglish sentiment classifier fine‑tuned on XLM‑RoBERTa. |
-| **GH Buddy RAG Chatbot** | RAG chatbot using ChromaDB and dual model routing for student Q&A. |
-| **PDC Health Diagnosis System** | Parallel ML pipeline predicting gender, age, and disease from sensor features. |
-| **AI Skill Matching Platform (FYP)** | NLP‑based skill extraction, profile matching, and chatbot for team formation. |
+To replace the profile photo, drop a new image at `src/assets/images/muhammadHaseebProfile.png`.
 
----
-
-## 📂 Getting Started (Local Development)
-
-### Prerequisites
-
-- Node.js (v10.16.0 or higher)
-- npm (v6.9.0 or higher)
-- Git
-
-### Installation
+## Running locally
 
 ```bash
-# Clone your repository
-git clone https://github.com/GitwithHaseeb/Portfolio.git
-
-# Navigate into the folder
-cd Portfolio
-
-# Install dependencies
 npm install
-
-# Start the development server
 npm start
-docker build -t haseeb-portfolio .
-🔧 Environment Variables (for GitHub & Medium integration)
-REACT_APP_GITHUB_TOKEN="your_github_personal_access_token"
-GITHUB_USERNAME="GitwithHaseeb"
-USE_GITHUB_DATA="true"
-MEDIUM_USERNAME="your_medium_username"
-✏️ Customization – Edit src/portfolio.js
-All content lives in src/portfolio.js. You can change your name, bio, skills, projects, experience, and contact info there.
-Additional Files
-Colors – src/_globalColor.scss
+```
 
-Resume PDF – replace src/containers/greeting/resume/resume.pdf
+The app runs at http://localhost:3000.
 
-Lottie animations – replace JSON files in src/assets/lottie/
+## Building
 
-Page title & meta tags – public/index.html
+```bash
+npm run build
+```
 
-To hide a section (e.g., Blogs, Twitter), set its display flag to false in portfolio.js.
-🔗 **Live Demo** → https://portfolio-fs3i.vercel.app/
+Outputs a production bundle to `build/`.
+
+## Formatting
+
+```bash
+npm run format
+```
+
+## Deployment
+
+Pushes to `main` deploy automatically to Vercel.
+
+## Credits
+
+Originally scaffolded from [developerFolio](https://github.com/saadpasta/developerFolio) (MIT), then substantially rewritten — new design system, layout, components, and content.
+
+## License
+
+MIT — see [LICENSE](LICENSE).
