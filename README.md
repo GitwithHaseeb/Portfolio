@@ -92,3 +92,9 @@ Originally scaffolded from [developerFolio](https://github.com/saadpasta/develop
 ## License
 
 MIT — see [LICENSE](LICENSE).
+
+## Image assets
+
+The full-resolution profile photo is kept at `design/profile-original.png`. It sits outside `src/`, so it is never bundled — it exists so the web asset can be regenerated without going back to a lossy copy.
+
+The hero image at `src/assets/images/muhammadHaseebProfile.jpg` is cropped from it to 4:5 with no resampling, and encoded at quality 94 with **4:4:4 chroma** (`subsampling=0`). Full chroma matters here: the photo puts dark hair and a black suit against a flat saturated sky, and the default 4:2:0 subsampling produces visible colour blocking along those edges.

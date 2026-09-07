@@ -95,8 +95,8 @@ export default function Greeting() {
                 className="hero__portrait"
                 alt={`${greeting.username} portrait`}
                 src={greeting.profileImage}
-                width="360"
-                height="440"
+                width="1003"
+                height="1254"
               />
               <div
                 className={
