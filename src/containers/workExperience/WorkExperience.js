@@ -13,8 +13,8 @@ export default function WorkExperience() {
     <div className="main experience-section" id="experience">
       <Reveal>
         <div className="section-head">
-          <span className="section-eyebrow">Experience</span>
-          <h1 className="section-title">Where I&apos;ve Built</h1>
+          <span className="section-eyebrow">Career</span>
+          <h1 className="section-title">Experience</h1>
           <p className="section-subtitle">
             Professional software delivery in production engineering teams
           </p>
