@@ -28,7 +28,7 @@ const greeting = {
     "Remote software engineer at RFM Loyalty Co., building on a UAE payments and POS platform. Outside of that I design and ship production-grade software end to end — retrieval-augmented AI systems, asynchronous FastAPI and Node backends, and design-system-driven React frontends — across 27 delivered projects.",
   currentRole: "Software Engineer @ RFM Loyalty Co. · Remote",
   location: "Lahore, Pakistan · Open to remote",
-  profileImage: require("./assets/images/muhammadHaseebProfile.png"),
+  profileImage: require("./assets/images/muhammadHaseebProfile.jpg"),
   resumeLink: "",
   displayGreeting: true
 };

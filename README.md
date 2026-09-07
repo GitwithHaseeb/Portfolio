@@ -56,7 +56,7 @@ Everything shown on the site lives in **`src/portfolio.js`** — no component ch
 - `achievementSection` — core competency cards
 - `contactInfo` — email, phone, and contact copy
 
-To replace the profile photo, drop a new image at `src/assets/images/muhammadHaseebProfile.png`.
+To replace the profile photo, drop a new image at `src/assets/images/muhammadHaseebProfile.jpg`.
 
 ## Running locally
 
