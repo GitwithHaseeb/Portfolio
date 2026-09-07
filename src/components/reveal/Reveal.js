@@ -3,8 +3,12 @@ import "./Reveal.scss";
 
 /**
  * Lightweight scroll reveal built on IntersectionObserver.
- * Replaces react-reveal: no legacy React APIs, no scroll listeners,
- * and it degrades to "always visible" when the API is unavailable.
+ *
+ * Replaces react-reveal: no legacy React APIs and no per-frame work. An
+ * IntersectionObserver only delivers callbacks on a rendering step, so a
+ * throttled or occluded tab can starve it; the scroll/resize/timeout
+ * fallback below measures the rect directly and guarantees content is
+ * never left invisible.
  */
 export default function Reveal({
   children,
@@ -26,20 +30,53 @@ export default function Reveal({
       return undefined;
     }
 
-    const observer = new IntersectionObserver(
+    let done = false;
+    let observer = null;
+    let timer = null;
+
+    function cleanup() {
+      if (observer) {
+        observer.disconnect();
+        observer = null;
+      }
+      window.removeEventListener("scroll", check);
+      window.removeEventListener("resize", check);
+      clearTimeout(timer);
+    }
+
+    function show() {
+      if (done) {
+        return;
+      }
+      done = true;
+      setShown(true);
+      cleanup();
+    }
+
+    function check() {
+      const rect = node.getBoundingClientRect();
+      const viewportHeight =
+        window.innerHeight || document.documentElement.clientHeight;
+      if (rect.top < viewportHeight - 40 && rect.bottom > 0) {
+        show();
+      }
+    }
+
+    observer = new IntersectionObserver(
       entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            setShown(true);
-            observer.unobserve(entry.target);
-          }
-        });
+        if (entries.some(entry => entry.isIntersecting)) {
+          show();
+        }
       },
       {threshold: 0.05, rootMargin: "0px 0px -40px 0px"}
     );
-
     observer.observe(node);
-    return () => observer.disconnect();
+
+    window.addEventListener("scroll", check, {passive: true});
+    window.addEventListener("resize", check, {passive: true});
+    timer = setTimeout(check, 900);
+
+    return cleanup;
   }, []);
 
   const classes = [
