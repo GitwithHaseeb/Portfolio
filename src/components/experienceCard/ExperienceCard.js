@@ -42,6 +42,12 @@ export default function ExperienceCard({cardInfo}) {
                 cardInfo.company
               )}
             </p>
+            {cardInfo.location && (
+              <p className="xp-card__location">
+                <i className="fas fa-map-marker-alt" aria-hidden="true"></i>
+                {cardInfo.location}
+              </p>
+            )}
           </div>
 
           <span

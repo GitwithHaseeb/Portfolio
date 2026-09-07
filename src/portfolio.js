@@ -25,8 +25,8 @@ const greeting = {
     "Creative Frontend Developer"
   ],
   subTitle:
-    "Software engineer at RFM Loyalty Co., building on a UAE payments and POS platform. Outside of that I design and ship production-grade software end to end — retrieval-augmented AI systems, asynchronous FastAPI and Node backends, and design-system-driven React frontends — across 27 delivered projects.",
-  currentRole: "Software Engineer @ RFM Loyalty Co.",
+    "Remote software engineer at RFM Loyalty Co., building on a UAE payments and POS platform. Outside of that I design and ship production-grade software end to end — retrieval-augmented AI systems, asynchronous FastAPI and Node backends, and design-system-driven React frontends — across 27 delivered projects.",
+  currentRole: "Software Engineer @ RFM Loyalty Co. · Remote",
   location: "Lahore, Pakistan · Open to remote",
   profileImage: require("./assets/images/muhammadHaseebProfile.png"),
   resumeLink: "",
@@ -160,6 +160,7 @@ const workExperiences = {
       company: "RFM Loyalty Co.",
       companyShort: "RFM",
       companyUrl: "https://www.rfmloyaltyco.ae/",
+      location: "Remote · UAE",
       current: true,
       date: "2026 — Present",
       desc: "Software engineer at a UAE payments and loyalty company that owns and operates the POS terminal network for First Abu Dhabi Bank, serving 15,000+ merchants across all seven Emirates.",
@@ -173,6 +174,7 @@ const workExperiences = {
       role: "Java Developer Intern",
       company: "Uworx Software House",
       companyShort: "UW",
+      location: "On-site · Lahore",
       companylogo: require("./assets/images/uworxLogo.png"),
       date: "Aug 2025 — Sep 2025",
       desc: "Worked inside a professional delivery team on Java module implementation, debugging, and code quality.",

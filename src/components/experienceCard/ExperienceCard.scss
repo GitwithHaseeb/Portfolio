@@ -207,3 +207,18 @@
   background: var(--accent-soft);
   border-color: var(--accent-ring);
 }
+
+.xp-card__location {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 4px 0 0;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.xp-card__location i {
+  font-size: 0.75em;
+  color: var(--accent);
+}
